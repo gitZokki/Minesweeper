@@ -26,7 +26,7 @@ public class SettingsPanel extends JPanel {
 	JTextField mineHeightCount = new JTextField("" + settings.getMineHeightCount());
 	JTextField bombCount = new JTextField("" + settings.getBombCount());
 	JLabel label = new JLabel("*");
-	JLabel mineCountLabel = new JLabel("= 100");	
+	JLabel mineCountLabel = new JLabel("= " + (settings.getMineWidthCount() * settings.getMineHeightCount()));	
 	
 	mineWidthCount.setBorder(BorderFactory.createTitledBorder("Mine Width Count"));
 	mineWidthCount.setPreferredSize(new Dimension(125, 40));

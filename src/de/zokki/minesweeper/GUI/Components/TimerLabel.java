@@ -18,7 +18,6 @@ public class TimerLabel extends JLabel {
 
     public static void startTimer() throws RuntimeException {
 	if (!isStarted) {
-	    System.out.println("started");
 	    isStarted = true;
 	    if (timer.getState() == Thread.State.TERMINATED) {
 		timer = new Timer(label);
@@ -33,7 +32,7 @@ public class TimerLabel extends JLabel {
     public static void resetTimer() {
 	isStarted = false;
 	timer.stop();
-	label.setText("00:00.000");
+	label = new TimerLabel();
     }
 
     @SuppressWarnings("deprecation")
