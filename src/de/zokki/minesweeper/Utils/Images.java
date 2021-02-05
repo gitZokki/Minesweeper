@@ -1,10 +1,11 @@
 package de.zokki.minesweeper.Utils;
 
 import java.awt.Image;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+
+import de.zokki.minesweeper.Minesweeper;
 
 public class Images {
     private static Image flagImage, bombImage, winImage, startImage, loseImage, settingsImage;
@@ -13,12 +14,13 @@ public class Images {
 
     static {
 	try {
-	    flagImage = ImageIO.read(new File("resources/flag.png"));
-	    bombImage = ImageIO.read(new File("resources/bomb.png"));
-	    winImage = ImageIO.read(new File("resources/win.png"));
-	    startImage = ImageIO.read(new File("resources/start.png"));
-	    loseImage = ImageIO.read(new File("resources/lose.png"));
-	    settingsImage = ImageIO.read(new File("resources/settings.png"));
+	    System.out.println(Minesweeper.class.getResource("/flag.png"));
+	    flagImage = ImageIO.read(Minesweeper.class.getResource("/flag.png"));
+	    bombImage = ImageIO.read(Minesweeper.class.getResource("/bomb.png"));
+	    winImage = ImageIO.read(Minesweeper.class.getResource("/win.png"));
+	    startImage = ImageIO.read(Minesweeper.class.getResource("/start.png"));
+	    loseImage = ImageIO.read(Minesweeper.class.getResource("/lose.png"));
+	    settingsImage = ImageIO.read(Minesweeper.class.getResource("/settings.png"));
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
