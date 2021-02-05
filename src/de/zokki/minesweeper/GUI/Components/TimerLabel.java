@@ -1,5 +1,8 @@
 package de.zokki.minesweeper.GUI.Components;
 
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
 public class TimerLabel extends JLabel {
@@ -14,14 +17,15 @@ public class TimerLabel extends JLabel {
 
     private TimerLabel() {
 	setText("00:00.000");
+	setBorder(BorderFactory.createTitledBorder("TIMER"));
+	setFont(new Font(getFont().getName(), Font.PLAIN, 30));
+	setSize(160, 50);
     }
 
     public static void startTimer() throws RuntimeException {
 	if (!isStarted) {
 	    isStarted = true;
-	    if (timer.getState() == Thread.State.TERMINATED) {
-		timer = new Timer(label);
-	    }
+	    timer = new Timer(label);
 	    timer.start();
 	} else {
 	    throw new RuntimeException("Timer already started!");

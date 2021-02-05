@@ -2,7 +2,6 @@ package de.zokki.minesweeper.GUI.Components;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.swing.JLabel;
 
@@ -16,11 +15,11 @@ public class Timer extends Thread {
 
     @Override
     public void run() {
-	long startTime = new Date().getTime();
-
+	long startTime = System.currentTimeMillis();
+	
 	while (true) {
 	    DateFormat timeFormat = new SimpleDateFormat("mm:ss.SSS");
-	    label.setText(timeFormat.format(new Date().getTime() - startTime));
+	    label.setText(timeFormat.format(System.currentTimeMillis() - startTime));
 	}
     }
 

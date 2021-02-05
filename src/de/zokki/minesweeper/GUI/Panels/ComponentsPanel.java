@@ -2,15 +2,12 @@ package de.zokki.minesweeper.GUI.Panels;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.zokki.minesweeper.Minesweeper;
@@ -24,7 +21,7 @@ public class ComponentsPanel extends JPanel {
 
     private Dimension preferedSize;
 
-    JButton settingsButton;
+    private JButton settingsButton;
 
     public ComponentsPanel(int width, int height) {
 	this.preferedSize = new Dimension(width, height);
@@ -33,7 +30,7 @@ public class ComponentsPanel extends JPanel {
 
 	addListeners();
 
-	add(getTimer());
+	add(TimerLabel.getLabel());
 	add(ResetButton.getButton());
 	add(getSettings());
     }
@@ -51,14 +48,6 @@ public class ComponentsPanel extends JPanel {
 		settingsButton.setLocation(getWidth() - 50, 7);
 	    }
 	});
-    }
-
-    private JLabel getTimer() {
-	JLabel timerLabel = TimerLabel.getLabel();
-	timerLabel.setBorder(BorderFactory.createTitledBorder("TIMER"));
-	timerLabel.setFont(new Font(timerLabel.getFont().getName(), Font.PLAIN, 30));
-	timerLabel.setSize(160, 50);
-	return timerLabel;
     }
 
     private JButton getSettings() {

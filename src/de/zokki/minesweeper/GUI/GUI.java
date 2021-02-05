@@ -1,12 +1,14 @@
 package de.zokki.minesweeper.GUI;
 
+import java.awt.AWTEvent;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.event.AWTEventListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
@@ -21,7 +23,7 @@ public class GUI extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private Rectangle bounds = getBounds();
-    
+
     public GUI(String name, int width, int height) {
 	super(name);
 	setMinimumSize(new Dimension(width, height));
@@ -36,6 +38,27 @@ public class GUI extends JFrame {
     }
 
     private void addListeners() {
+	AWTEventListener listener = new AWTEventListener() {
+	    @Override
+	    public void eventDispatched(AWTEvent event) {
+		try {
+		    int keyCode = ((KeyEvent) event).getKeyCode();
+		    if (getExtendedState() == JFrame.MAXIMIZED_BOTH && keyCode == KeyEvent.VK_ESCAPE) {
+			setBounds(bounds);
+			dispose();
+			setUndecorated(false);
+			setVisible(true);
+		    } else if (getExtendedState() != JFrame.MAXIMIZED_BOTH && keyCode == KeyEvent.VK_F11) {
+			setFullScreen();
+		    }
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+	    }
+	};
+
+	Toolkit.getDefaultToolkit().addAWTEventListener(listener, AWTEvent.KEY_EVENT_MASK);
+
 	addWindowStateListener(new WindowStateListener() {
 	    @Override
 	    public void windowStateChanged(WindowEvent e) {
@@ -54,20 +77,6 @@ public class GUI extends JFrame {
 	    @Override
 	    public void componentMoved(ComponentEvent e) {
 		setBounds();
-	    }
-	});
-
-	addKeyListener(new KeyAdapter() {
-	    @Override
-	    public void keyPressed(KeyEvent e) {
-		if (getExtendedState() == JFrame.MAXIMIZED_BOTH && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-		    setBounds(bounds);
-		    dispose();
-		    setUndecorated(false);
-		    setVisible(true);
-		} else if (getExtendedState() != JFrame.MAXIMIZED_BOTH && e.getKeyCode() == KeyEvent.VK_F11) {
-		    setFullScreen();
-		}
 	    }
 	});
     }

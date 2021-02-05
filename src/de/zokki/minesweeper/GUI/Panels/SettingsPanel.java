@@ -41,7 +41,7 @@ public class SettingsPanel extends JPanel {
 			    mineWidthCount.setText(textInt + "");
 			    
 			    int newBombCount = textInt * Integer.parseInt(mineHeightCount.getText());
-			    updateBombCount(newBombCount, bombCount);
+			    updateBombCount(newBombCount - 1, bombCount);
 			    mineCountLabel.setText("= " + newBombCount);
 			    settings.setMineWidthCount(textInt);
 			});
@@ -65,9 +65,9 @@ public class SettingsPanel extends JPanel {
 			    mineHeightCount.setText(textInt + "");
 			    
 			    int newBombCount = textInt * Integer.parseInt(mineWidthCount.getText());
-			    updateBombCount(newBombCount, bombCount);
+			    updateBombCount(newBombCount - 1, bombCount);
 			    mineCountLabel.setText("= " + newBombCount);
-			    settings.setMineWidthCount(textInt);
+			    settings.setMineHeightCount(textInt);
 			});
 	    }
 	});

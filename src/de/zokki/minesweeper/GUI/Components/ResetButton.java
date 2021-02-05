@@ -42,13 +42,13 @@ public class ResetButton extends JButton {
     }
 
     public static void onClick() {
+	TimerLabel.resetTimer();
+	setImageIcon(Images.getStartIcon());
 	GUI GUI = Minesweeper.currentGUI;
 	Rectangle lastBounds = GUI.getBounds();
 
 	GUI.dispose();
 	Minesweeper.currentGUI = new GUI("Minesweeper", 500, 500);
 	Minesweeper.currentGUI.setBounds(lastBounds);
-	TimerLabel.resetTimer();
-	setImageIcon(Images.getStartIcon());
     }
 }
