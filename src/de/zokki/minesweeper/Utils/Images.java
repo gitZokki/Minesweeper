@@ -14,7 +14,6 @@ public class Images {
 
     static {
 	try {
-	    System.out.println(Minesweeper.class.getResource("/flag.png"));
 	    flagImage = ImageIO.read(Minesweeper.class.getResource("/flag.png"));
 	    bombImage = ImageIO.read(Minesweeper.class.getResource("/bomb.png"));
 	    winImage = ImageIO.read(Minesweeper.class.getResource("/win.png"));
