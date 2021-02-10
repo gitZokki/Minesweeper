@@ -14,12 +14,12 @@ public class Images {
 
     static {
 	try {
-	    flagImage = ImageIO.read(Minesweeper.class.getResource("/flag.png"));
-	    bombImage = ImageIO.read(Minesweeper.class.getResource("/bomb.png"));
-	    winImage = ImageIO.read(Minesweeper.class.getResource("/win.png"));
-	    startImage = ImageIO.read(Minesweeper.class.getResource("/start.png"));
-	    loseImage = ImageIO.read(Minesweeper.class.getResource("/lose.png"));
-	    settingsImage = ImageIO.read(Minesweeper.class.getResource("/settings.png"));
+	    flagImage = ImageIO.read(Minesweeper.class.getResource("/resources/flag.png"));
+	    bombImage = ImageIO.read(Minesweeper.class.getResource("/resources/bomb.png"));
+	    winImage = ImageIO.read(Minesweeper.class.getResource("/resources/win.png"));
+	    startImage = ImageIO.read(Minesweeper.class.getResource("/resources/start.png"));
+	    loseImage = ImageIO.read(Minesweeper.class.getResource("/resources/lose.png"));
+	    settingsImage = ImageIO.read(Minesweeper.class.getResource("/resources/settings.png"));
 	} catch (Exception e) {
 	    e.printStackTrace();
 	}
